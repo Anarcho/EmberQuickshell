@@ -34,7 +34,7 @@ ShellRoot {
                     WlrLayershell.namespace: "ember"
                     color: "transparent"
                     exclusionMode: ExclusionMode.Ignore
-                    mask: pill
+                    mask: pillRegion
                     screen: monitorShell.modelData
                     anchors {
                         bottom: true
