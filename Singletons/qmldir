@@ -4,3 +4,4 @@ singleton Dimensions Dimensions.qml
 singleton Radii Radii.qml
 singleton SurfaceProfiles SurfaceProfiles.qml
 singleton Motion Motion.qml
+singleton Clock Clock.qml

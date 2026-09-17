@@ -4,6 +4,8 @@ import "../Singletons" as T
 
 Item {
     id: root
+    property string profileName: "compactPill"
+    readonly property var profile: T.SurfaceProfiles.forSurface(profileName)
     default property alias content: column.data
     property bool open: false
     property bool reveal: false
@@ -13,8 +15,8 @@ Item {
     implicitWidth: column.implicitWidth
     implicitHeight: column.implicitHeight
     enabled: open && reveal
-    opacity: open && reveal ? 1 : 0
-    visible: opacity > 0
+    //opacity: open && reveal ? 1 : 0
+    //visible: opacity > 0
 
     data: [
         ColumnLayout {

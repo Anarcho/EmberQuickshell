@@ -4,8 +4,7 @@ import "../Singletons" as T
 Rectangle {
     id: root
     property bool active: false
-    property string surfaceName: "compactPill"
-    readonly property var profile: T.SurfaceProfiles.forSurace(surfaceName)
+    readonly property var profile: T.SurfaceProfiles.forSurface("compactPill")
     default property alias contentData: content.data
     readonly property alias contentItem: content
     property real preferredContentHeight: 0

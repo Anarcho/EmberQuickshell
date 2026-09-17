@@ -37,14 +37,17 @@ Item {
         id: frame
         anchors.fill: parent
 
-        CompactPill {
+        CompactPillSurface {
             id: compactPill
             anchors.fill: parent
+            profileName: "compactPill"
         }
 
-        ExpandedBar {
+        ExpandedBarSurface {
             id: expandedBar
             anchors.fill: parent
+            profileName: "expandedBar"
+            visible: false
         }
     }
 }

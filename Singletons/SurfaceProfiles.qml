@@ -2,12 +2,12 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-    function forSurace(name) {
+    function forSurface(name) {
         switch (name) {
         case "expandedBar":
             return {
                 horizontalPadding: SurfaceMetrics.expandedInsetHorizontal,
-                expandedInsetVertical: SurfaceMetrics.expandedInsetVertical,
+                verticalPadding: SurfaceMetrics.expandedInsetVertical,
                 height: Dimensions.expandedBarHeight
             };
         default:

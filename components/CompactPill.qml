@@ -3,17 +3,23 @@ import QtQuick.Layouts
 import "../Singletons" as T
 import "../components"
 
-PillSurface {
+RowLayout {
     id: root
-    RowLayout {
-        spacing: T.Spacing.sm
+    readonly property string dateText: T.Clock.dateLabel
+    property real layoutHeight: 0
+    property real layoutPreferredWidth: 0
+    property real inset: 0
 
-        Rectangle {
-            id: testBox
-            color: "#e76f51"
-            Layout.fillWidth: true
-            Layout.preferredHeight: T.Dimensions.compactPillHeight - T.SurfaceMetrics.compactInset * 2
-            Layout.preferredWidth: T.Dimensions.compactPillPreferredWidth - T.SurfaceMetrics.compactInset * 2
+    spacing: T.Spacing.sm
+    Layout.preferredHeight: root.layoutHeight - root.inset * 2
+    Layout.preferredWidth: root.layoutPreferredWidth - root.inset * 2
+
+    Rectangle {
+        implicitWidth: 214
+        implicitHeight: 76
+        ClockDisplay {
+            id: clock
+            dateText: root.dateText
         }
     }
 }
