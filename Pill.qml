@@ -1,20 +1,28 @@
-pragma ComponentBehavior: Bound
 import QtQuick
+import "Singletons" as T
 import "surfaces"
 import "components"
 
 Item {
     id: pill
     property bool expanded: false
-    readonly property var currentFace: compactPill
-    height: implicitHeight
+    readonly property real targetHeight: compactPill.implicitHeight + frame.verticalPadding * 2
+    readonly property real targetWidth: compactPill.implicitWidth + frame.horizontalPadding * 2
 
-    readonly property real targetHeight: (currentFace ? currentFace.implicitHeight : compactPill.implicitHeight)
+    implicitHeight: targetHeight
+    implicitWidth: targetWidth
+    height: implicitHeight
+    width: implicitWidth
 
     SurfaceFrame {
         id: frame
+        anchors.fill: parent
+        horizontalPadding: T.SurfaceMetrics.compactInset
+        verticalPadding: T.SurfaceMetrics.compactInset
+
         CompactPill {
             id: compactPill
+            anchors.fill: parent
         }
     }
 }

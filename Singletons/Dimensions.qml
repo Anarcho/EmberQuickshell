@@ -5,4 +5,7 @@ QtObject {
     readonly property int compactPillHeight: 76
     readonly property int compactPillMinWidth: 280
     readonly property int compactPillPreferredWidth: 388
+
+    readonly property int expandedBarHeight: 104
+    readonly property int expandedBarpreferredHeight: 1120
 }

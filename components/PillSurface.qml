@@ -13,8 +13,6 @@ Item {
     implicitWidth: column.implicitWidth
     implicitHeight: column.implicitHeight
     enabled: open && reveal
-    opacity: opacity && reveal ? 1 : 0
-    visible: opacity > 0
 
     data: [
         ColumnLayout {

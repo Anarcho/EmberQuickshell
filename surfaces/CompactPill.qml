@@ -12,10 +12,9 @@ PillSurface {
         spacing: T.Spacing.sm
 
         Rectangle {
-            border.color: "#F19A5B"
-            border.width: 2
-            color: "transparent"
-            radius: Math.min(width, height / 2)
+            id: testBox
+            color: "#e76f51"
+            Layout.fillWidth: true
         }
     }
 }
