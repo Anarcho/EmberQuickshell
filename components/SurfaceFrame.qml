@@ -4,12 +4,13 @@ import "../Singletons" as T
 Rectangle {
     id: root
     property bool active: false
+    property string surfaceName: "compactPill"
+    readonly property var profile: T.SurfaceProfiles.forSurace(surfaceName)
     default property alias contentData: content.data
     readonly property alias contentItem: content
     property real preferredContentHeight: 0
-    readonly property bool tallSurface: preferredContentHeight > T.Dimensions.expandedBarHeight
-    property real horizontalPadding: tallSurface ? T.SurfaceMetrics.majorInset : T.SurfaceMetrics.compactInset
-    property real verticalPadding: tallSurface ? T.SurfaceMetrics.majorInset : T.SurfaceMetrics.compactInset
+    property real horizontalPadding: profile.horizontalPadding
+    property real verticalPadding: profile.verticalPadding
     color: "transparent"
 
     radius: T.Radii.pill(height)

@@ -2,3 +2,4 @@ singleton Spacing Spacing.qml
 singleton SurfaceMetrics SurfaceMetrics.qml
 singleton Dimensions Dimensions.qml
 singleton Radii Radii.qml
+singleton SurfaceProfiles SurfaceProfiles.qml

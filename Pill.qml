@@ -6,8 +6,8 @@ import "components"
 Item {
     id: pill
     property bool expanded: false
-    readonly property real targetHeight: compactPill.implicitHeight + frame.verticalPadding * 2
-    readonly property real targetWidth: compactPill.implicitWidth + frame.horizontalPadding * 2
+    readonly property real targetHeight: currentFace.implicitHeight + frame.verticalPadding * 2
+    readonly property real targetWidth: currentFace.implicitWidth + frame.horizontalPadding * 2
     readonly property bool compactPillActive: true
     readonly property var currentFace: compactPillActive ? compactPill : expandedBar
 
@@ -19,8 +19,6 @@ Item {
     SurfaceFrame {
         id: frame
         anchors.fill: parent
-        horizontalPadding: T.SurfaceMetrics.compactInset
-        verticalPadding: T.SurfaceMetrics.compactInset
 
         CompactPill {
             id: compactPill
