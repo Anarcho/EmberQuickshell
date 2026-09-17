@@ -13,6 +13,8 @@ Item {
     implicitWidth: column.implicitWidth
     implicitHeight: column.implicitHeight
     enabled: open && reveal
+    opacity: open && reveal ? 1 : 0
+    visible: opacity > 0
 
     data: [
         ColumnLayout {
@@ -23,4 +25,12 @@ Item {
             spacing: T.Spacing.md
         }
     ]
+
+    Behavior on opacity {
+        enabled: T.Motion.enabled
+        NumberAnimation {
+            duration: T.Motion.normal
+            easing.type: T.Motion.easeOut
+        }
+    }
 }

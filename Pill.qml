@@ -16,6 +16,23 @@ Item {
     height: implicitHeight
     width: implicitWidth
 
+    Behavior on height {
+        enabled: T.Motion.enabled
+
+        NumberAnimation {
+            duration: T.Motion.morph
+            easing.type: T.Motion.easeOut
+        }
+    }
+
+    Behavior on width {
+        enabled: T.Motion.enabled
+        NumberAnimation {
+            duration: T.Motion.morph
+            easing.type: T.Motion.easeOut
+        }
+    }
+
     SurfaceFrame {
         id: frame
         anchors.fill: parent
