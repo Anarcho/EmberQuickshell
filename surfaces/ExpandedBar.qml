@@ -5,6 +5,8 @@ import "../components"
 
 PillSurface {
     id: root
-
-    CompactPill {}
+    ExpandedBar {
+        Layout.preferredHeight: 92
+        Layout.preferredWidth: 1088
+    }
 }
