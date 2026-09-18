@@ -19,8 +19,12 @@ RowLayout {
             id: slotButtons
             required property int modelData
             selected: modelData === root.activeId
+
             Layout.fillWidth: true
             Layout.fillHeight: true
+
+            implicitHeight: slots.implicitHeight + T.Spacing.lg * 2
+            implicitWidth: slots.implicitWidth + T.Spacing.lg * 2
 
             Text {
                 id: slots

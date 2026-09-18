@@ -10,4 +10,6 @@ QtObject {
     readonly property int minorInsetVertical: 14
 
     readonly property int majorInset: 22
+
+    readonly property real rimWidth: 6
 }

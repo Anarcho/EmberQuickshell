@@ -13,6 +13,9 @@ Item {
 
     property var currentFace: !expanded ? compactPill : expandedBar
 
+    readonly property int activeWorkspace: T.Workspaces.activeId(screenName)
+    property int previousWorkspace: 0
+
     implicitHeight: targetHeight
     implicitWidth: targetWidth
     height: implicitHeight
@@ -65,6 +68,14 @@ Item {
             duration: T.Motion.morph
             easing.type: T.Motion.easeOut
         }
+    }
+
+    Component.onCompleted: pill.previousWorkspace = pill.activeWorkspace
+    onActiveWorkspaceChanged: {
+        const next = pill.activeWorkspace;
+        if (pill.previousWorkspace > 0 && next > 0 && next !== pill.previousWorkspace)
+            T.Surfaces.send("workspace", "*");
+        pill.previousWorkspace = next;
     }
 
     Connections {

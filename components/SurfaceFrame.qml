@@ -13,17 +13,25 @@ Rectangle {
     property real verticalPadding: profile.verticalPadding
     color: "transparent"
 
+    // TODO: add to profiles
+    property point activeReflectionPoint: Qt.point(width / 2, height)
+    property rect backdropRect: Qt.rect(0, 0, width, height)
+    property Item backdropSource: null
+    property real glassAmount: 1
+    property real rimWidth: T.SurfaceMetrics.rimWidth
+
     radius: T.Radii.pill(height)
 
     data: [
-        // will replace this with the glass reflection look
-        Rectangle {
-            id: background
+        GlassMaterial {
+            active: root.active
             anchors.fill: parent
-            color: "blue"
-            width: root.width * 2
-            height: root.height
+            activeReflectionPoint: root.activeReflectionPoint
+            backdropRect: root.backdropRect
+            backdropSource: root.backdropSource
+            glassAmount: root.glassAmount
             radius: root.radius
+            rimWidth: root.rimWidth
         },
         Item {
             id: content

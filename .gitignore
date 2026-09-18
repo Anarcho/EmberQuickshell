@@ -2,3 +2,4 @@
 .qmlformat.ini
 *.sh
 notes/
+*.qsb
