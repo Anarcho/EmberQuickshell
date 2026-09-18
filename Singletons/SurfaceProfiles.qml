@@ -8,13 +8,17 @@ QtObject {
             return {
                 horizontalPadding: SurfaceMetrics.expandedInsetHorizontal,
                 verticalPadding: SurfaceMetrics.expandedInsetVertical,
-                height: Dimensions.expandedBarHeight
+                height: Dimensions.expandedBarHeight,
+                minimumWidth: Dimensions.expandedBarMinWidth,
+                preferredWidth: Dimensions.expandedBarPreferredWidth
             };
         default:
             return {
                 horizontalPadding: SurfaceMetrics.compactInset,
                 verticalPadding: SurfaceMetrics.compactInset,
-                height: Dimensions.compactPillHeight
+                height: Dimensions.compactPillHeight,
+                minimumWidth: Dimensions.compactPillMinWidth,
+                preferredWidth: Dimensions.compactPillPreferredWidth
             };
         }
     }

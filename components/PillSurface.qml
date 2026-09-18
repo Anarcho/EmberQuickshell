@@ -6,14 +6,15 @@ Item {
     id: root
     property string profileName: "compactPill"
     readonly property var profile: T.SurfaceProfiles.forSurface(profileName)
+    property Item contentItem
     default property alias content: column.data
     property bool open: false
     property bool reveal: false
 
     signal requestClose
 
-    implicitWidth: column.implicitWidth
-    implicitHeight: column.implicitHeight
+    implicitWidth: Math.max(profile.minimumWidth, profile.preferredWidth, column.implicitWidth + profile.horizontalPadding * 2)
+    implicitHeight: profile.height
     enabled: open && reveal
     //opacity: open && reveal ? 1 : 0
     //visible: opacity > 0
@@ -21,9 +22,7 @@ Item {
     data: [
         ColumnLayout {
             id: column
-            anchors.centerIn: parent
-            width: implicitWidth
-            height: implicitHeight
+            anchors.fill: parent
             spacing: T.Spacing.md
         }
     ]

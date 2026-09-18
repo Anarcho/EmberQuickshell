@@ -6,10 +6,10 @@ import "components"
 Item {
     id: pill
     property bool expanded: false
-    readonly property real targetHeight: currentFace.implicitHeight + frame.verticalPadding * 2
-    readonly property real targetWidth: currentFace.implicitWidth + frame.horizontalPadding * 2
-    readonly property bool compactPillActive: true
-    readonly property var currentFace: compactPillActive ? compactPill : expandedBar
+    readonly property real targetHeight: currentFace.implicitHeight
+    readonly property real targetWidth: currentFace.implicitWidth
+    readonly property bool compactPillActive: false
+    readonly property var currentFace: compactPill
 
     implicitHeight: targetHeight
     implicitWidth: targetWidth
@@ -35,18 +35,18 @@ Item {
 
     SurfaceFrame {
         id: frame
+        profile: pill.currentFace.profile
         anchors.fill: parent
 
         CompactPillSurface {
             id: compactPill
             anchors.fill: parent
-            profileName: "compactPill"
+            visible: true
         }
 
         ExpandedBarSurface {
             id: expandedBar
             anchors.fill: parent
-            profileName: "expandedBar"
             visible: false
         }
     }

@@ -5,10 +5,12 @@ import "../components"
 
 PillSurface {
     id: root
+    profileName: "compactPill"
+    content: compactContent
 
     CompactPill {
-        id: compactPill
-        layoutHeight: root.profile.height
-        inset: root.profile.verticalPadding
+        id: compactContent
+        Layout.fillWidth: true
+        Layout.fillHeight: true
     }
 }

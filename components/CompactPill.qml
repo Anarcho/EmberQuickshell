@@ -6,19 +6,25 @@ import "../components"
 RowLayout {
     id: root
     readonly property string dateText: T.Clock.dateLabel
-    property real layoutHeight: 0
-    property real layoutPreferredWidth: 0
-    property real inset: 0
-
     spacing: T.Spacing.sm
-    Layout.preferredHeight: root.layoutHeight - root.inset * 2
-    Layout.preferredWidth: root.layoutPreferredWidth - root.inset * 2
 
     Rectangle {
-        implicitWidth: 214
-        implicitHeight: 76
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        implicitWidth: clock.implicitWidth
+        implicitHeight: clock.implicitHeight
         ClockDisplay {
             id: clock
+            dateText: root.dateText
+        }
+    }
+    Rectangle {
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        implicitWidth: clock2.implicitWidth
+        implicitHeight: clock2.implicitHeight
+        ClockDisplay {
+            id: clock2
             dateText: root.dateText
         }
     }

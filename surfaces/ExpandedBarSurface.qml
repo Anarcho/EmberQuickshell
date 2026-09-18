@@ -6,7 +6,10 @@ import "../components"
 PillSurface {
     id: root
     ExpandedBar {
-        Layout.preferredHeight: 96
-        Layout.preferredWidth: 1088
+        layoutHeight: root.profile.height
+        inset: root.profile.verticalPadding
+        Text {
+            text: root.profile.height
+        }
     }
 }

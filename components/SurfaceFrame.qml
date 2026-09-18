@@ -4,7 +4,7 @@ import "../Singletons" as T
 Rectangle {
     id: root
     property bool active: false
-    readonly property var profile: T.SurfaceProfiles.forSurface("compactPill")
+    property var profile
     default property alias contentData: content.data
     readonly property alias contentItem: content
     property real preferredContentHeight: 0
@@ -15,11 +15,12 @@ Rectangle {
     radius: T.Radii.pill(height)
 
     data: [
+        // will replace this with the glass reflection look
         Rectangle {
             id: background
             anchors.fill: parent
-            color: "white"
-            width: root.width
+            color: "blue"
+            width: root.width * 2
             height: root.height
             radius: root.radius
         },
