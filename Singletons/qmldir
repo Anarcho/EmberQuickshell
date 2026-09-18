@@ -7,3 +7,4 @@ singleton Motion Motion.qml
 singleton Clock Clock.qml
 singleton Flags Flags.qml
 singleton Workspaces Workspaces.qml
+singleton Surfaces Surfaces.qml

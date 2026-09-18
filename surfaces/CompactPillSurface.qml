@@ -8,6 +8,16 @@ PillSurface {
     profileName: "compactPill"
     content: compactContent
 
+    Component.onCompleted: {
+        if (T.Flags.debugMode)
+            console.log("CompactPill surface view created");
+    }
+
+    Component.onDestruction: {
+        if (T.Flags.debugMode)
+            console.log("CompactPill surface view destroyed");
+    }
+
     CompactPill {
         id: compactContent
         Layout.fillWidth: true

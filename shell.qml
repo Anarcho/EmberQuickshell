@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import Quickshell
+import Quickshell.Wayland
 import "Singletons" as T
 
 ShellRoot {
@@ -13,6 +14,7 @@ ShellRoot {
             required property var modelData
 
             PanelWindow {
+                WlrLayershell.namespace: "ember"
                 implicitHeight: T.Spacing.sm + pill.implicitHeight + T.Spacing.sm
                 color: "transparent"
                 screen: monitorShell.modelData

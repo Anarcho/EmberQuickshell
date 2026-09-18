@@ -6,16 +6,49 @@ import "components"
 Item {
     id: pill
     property bool expanded: false
+    required property string screenName
+
     readonly property real targetHeight: currentFace.implicitHeight
     readonly property real targetWidth: currentFace.implicitWidth
-    readonly property bool compactPillActive: false
-    readonly property var currentFace: compactPill
-    required property string screenName
+
+    property var currentFace: !expanded ? compactPill : expandedBar
 
     implicitHeight: targetHeight
     implicitWidth: targetWidth
     height: implicitHeight
     width: implicitWidth
+
+    function clearAnnouncement(): void {
+        announcementTimer.stop();
+    }
+
+    function toggle(): void {
+        pill.clearAnnouncement();
+        pill.expanded = !pill.expanded;
+    }
+
+    function flashWorkspaces(): void {
+        if (T.Workspaces.idsFor(pill.screenName).length === 0)
+            return;
+        pill.currentFace = workspaceSurface;
+        announcementTimer.restart();
+    }
+
+    function reset(): void {
+        pill.currentFace = compactPill;
+    }
+
+    Timer {
+        id: announcementTimer
+        interval: T.Flags.announcementMs
+        onTriggered: pill.reset()
+    }
+
+    Timer {
+        id: evictionTimer
+        interval: Math.max(T.Flags.unloadMs, T.Motion.enabled ? T.Motion.normal + T.Motion.morph : 0)
+        // onTriggered:
+    }
 
     Behavior on height {
         enabled: T.Motion.enabled
@@ -34,6 +67,22 @@ Item {
         }
     }
 
+    Connections {
+        function onCommand(monitorName: string, action: string): void {
+            if (monitorName !== "*" && monitorName !== pill.screenName)
+                return;
+            switch (action) {
+            case "workspace":
+                pill.flashWorkspaces();
+                break;
+            case "toggle":
+                pill.toggle();
+                break;
+            }
+        }
+        target: T.Surfaces
+    }
+
     SurfaceFrame {
         id: frame
         profile: pill.currentFace.profile
@@ -43,20 +92,20 @@ Item {
         CompactPillSurface {
             id: compactPill
             anchors.fill: parent
-            visible: true
+            visible: pill.currentFace === compactPill
         }
 
         ExpandedBarSurface {
             id: expandedBar
             anchors.fill: parent
-            visible: false
+            visible: pill.currentFace === expandedBar
         }
 
         WorkspaceSurface {
             id: workspaceSurface
             screenName: frame.screenName
             anchors.fill: parent
-            visible: false
+            visible: pill.currentFace === workspaceSurface
         }
     }
 }

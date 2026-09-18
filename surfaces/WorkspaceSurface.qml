@@ -9,6 +9,16 @@ PillSurface {
     profileName: "compactPill"
     content: workspaceContent
 
+    Component.onCompleted: {
+        if (T.Flags.debugMode)
+            console.log("Workspace surface view created");
+    }
+
+    Component.onDestruction: {
+        if (T.Flags.debugMode)
+            console.log("Workspace surface view destroyed");
+    }
+
     Workspaces {
         id: workspaceContent
         screenName: root.screenName
