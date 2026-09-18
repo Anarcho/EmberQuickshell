@@ -9,7 +9,7 @@ Item {
     readonly property real targetHeight: currentFace.implicitHeight
     readonly property real targetWidth: currentFace.implicitWidth
     readonly property bool compactPillActive: false
-    readonly property var currentFace: expandedBar
+    readonly property var currentFace: compactPill
     required property string screenName
 
     implicitHeight: targetHeight
@@ -43,7 +43,7 @@ Item {
         CompactPillSurface {
             id: compactPill
             anchors.fill: parent
-            visible: false
+            visible: true
         }
 
         ExpandedBarSurface {
@@ -56,7 +56,7 @@ Item {
             id: workspaceSurface
             screenName: frame.screenName
             anchors.fill: parent
-            visible: true
+            visible: false
         }
     }
 }

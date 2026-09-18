@@ -4,7 +4,9 @@
 
 ## Credits
 
-Inspired by the architecture of [**Ricelin**](https://github.com/Gakuseei/Ricelin) by [**Gakuseei**](https://github.com/Gakuseei), with many parts copied, reworked, or extended.
+Ember's visual design and morphing pill concept are inspired by [**Ricelin**](https://github.com/Gakuseei/Ricelin) by [**Gakuseei**](https://github.com/Gakuseei).
+
+Its component architecture is inspired by [**Ukishima**](https://github.com/amanhex/Ukishima) by [**amanhex**](https://github.com/amanhex).
 
 ## Status
 

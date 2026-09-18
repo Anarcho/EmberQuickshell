@@ -20,17 +20,4 @@ RowLayout {
             dateText: root.dateText
         }
     }
-    Rectangle {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-        Layout.margins: 10
-        implicitWidth: clock2.implicitWidth
-        implicitHeight: clock2.implicitHeight
-        radius: root.height / 2
-        ClockDisplay {
-            id: clock2
-            anchors.centerIn: parent
-            dateText: root.dateText
-        }
-    }
 }
