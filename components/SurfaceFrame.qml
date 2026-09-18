@@ -5,6 +5,7 @@ Rectangle {
     id: root
     property bool active: false
     property var profile
+    required property string screenName
     default property alias contentData: content.data
     readonly property alias contentItem: content
     property real preferredContentHeight: 0

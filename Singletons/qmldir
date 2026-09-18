@@ -5,3 +5,5 @@ singleton Radii Radii.qml
 singleton SurfaceProfiles SurfaceProfiles.qml
 singleton Motion Motion.qml
 singleton Clock Clock.qml
+singleton Flags Flags.qml
+singleton Workspaces Workspaces.qml

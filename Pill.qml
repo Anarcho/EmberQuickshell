@@ -9,7 +9,8 @@ Item {
     readonly property real targetHeight: currentFace.implicitHeight
     readonly property real targetWidth: currentFace.implicitWidth
     readonly property bool compactPillActive: false
-    readonly property var currentFace: compactPill
+    readonly property var currentFace: expandedBar
+    required property string screenName
 
     implicitHeight: targetHeight
     implicitWidth: targetWidth
@@ -36,18 +37,26 @@ Item {
     SurfaceFrame {
         id: frame
         profile: pill.currentFace.profile
+        screenName: pill.screenName
         anchors.fill: parent
 
         CompactPillSurface {
             id: compactPill
             anchors.fill: parent
-            visible: true
+            visible: false
         }
 
         ExpandedBarSurface {
             id: expandedBar
             anchors.fill: parent
             visible: false
+        }
+
+        WorkspaceSurface {
+            id: workspaceSurface
+            screenName: frame.screenName
+            anchors.fill: parent
+            visible: true
         }
     }
 }

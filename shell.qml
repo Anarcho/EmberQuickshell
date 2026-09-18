@@ -4,19 +4,32 @@ import QtQuick
 import Quickshell
 import "Singletons" as T
 
-PanelWindow {
-    implicitHeight: T.Spacing.sm + T.Dimensions.compactPillHeight + T.Spacing.sm
-    color: "transparent"
-    anchors {
-        top: true
-        left: true
-        right: true
-    }
+ShellRoot {
+    Variants {
+        model: Quickshell.screens
 
-    Pill {
-        id: pill
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
-        anchors.topMargin: T.Spacing.sm
+        Scope {
+            id: monitorShell
+            required property var modelData
+
+            PanelWindow {
+                implicitHeight: T.Spacing.sm + pill.implicitHeight + T.Spacing.sm
+                color: "transparent"
+                screen: monitorShell.modelData
+                anchors {
+                    top: true
+                    left: true
+                    right: true
+                }
+
+                Pill {
+                    id: pill
+                    screenName: monitorShell.modelData.name
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    anchors.topMargin: T.Spacing.sm
+                }
+            }
+        }
     }
 }
