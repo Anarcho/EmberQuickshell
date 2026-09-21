@@ -10,7 +10,9 @@ QtObject {
                 verticalPadding: SurfaceMetrics.expandedInsetVertical,
                 height: Dimensions.expandedBarHeight,
                 minimumWidth: Dimensions.expandedBarMinWidth,
-                preferredWidth: Dimensions.expandedBarPreferredWidth
+                preferredWidth: Dimensions.expandedBarPreferredWidth,
+                emblemHeight: Dimensions.emblemSize,
+                emblemWidth: Dimensions.emblemWidth
             };
         default:
             return {
@@ -18,7 +20,9 @@ QtObject {
                 verticalPadding: SurfaceMetrics.compactInset,
                 height: Dimensions.compactPillHeight,
                 minimumWidth: Dimensions.compactPillMinWidth,
-                preferredWidth: Dimensions.compactPillPreferredWidth
+                preferredWidth: Dimensions.compactPillPreferredWidth,
+                emblemHeight: Dimensions.compactEmblemHeight,
+                emblemWidth: Dimensions.compactEmblemWidth
             };
         }
     }
