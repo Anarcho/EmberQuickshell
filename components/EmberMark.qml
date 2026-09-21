@@ -112,6 +112,13 @@ Item {
         onWidthChanged: requestPaint()
     }
 
+    GlowPoint {
+        coreRadius: 0
+        glowColor: T.Colors.fireOrange
+        height: width
+        strength: root.expanded ? 0.33 : 0.48
+    }
+
     Item {
         anchors.centerIn: parent
         height: width * 2 / 3
