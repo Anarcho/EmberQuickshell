@@ -13,11 +13,14 @@ Item {
     property real radius: height / 2
     property real refractionStrength: 2
     property real rimWidth: T.SurfaceMetrics.rimWidth
+    property bool beveled: true
+    property bool arcReflections: true
+    property bool emblemHighlight: true
 
     ShaderEffectSource {
         id: capture
         height: root.height
-        live: root.backdropSoure !== null
+        live: root.backdropSource !== null
         sourceItem: root.backdropSource
         sourceRect: root.backdropRect
         visible: false
@@ -69,6 +72,7 @@ Item {
 
         onCoolReflectionChanged: requestPaint()
         onHeightChanged: requestPaint()
+
         onPaint: {
             const ctx = getContext("2d");
             ctx.reset();
@@ -77,9 +81,10 @@ Item {
             ctx.scale(paint.rasterScale, paint.rasterScale);
             if (width <= 0 || height <= 0)
                 return;
+
             const g = Math.max(0, Math.min(1, root.glassAmount));
 
-            function rounded(x, y, w, h, r): void {
+            function rounded(x, y, w, h, r) {
                 r = Math.max(0, Math.min(r, w / 2, h / 2));
                 ctx.beginPath();
                 ctx.moveTo(x + r, y);
@@ -124,7 +129,7 @@ Item {
             body.addColorStop(0.42, Qt.alpha(bodyTint, bodyAlpha + 0.06 * relief));
             body.addColorStop(1, Qt.alpha(bodyTint, bodyAlpha - 0.03 * relief));
 
-            ctx.fillStye = body;
+            ctx.fillStyle = body;
             ctx.fillRect(0, 0, width, height);
 
             ctx.save();
@@ -142,8 +147,8 @@ Item {
                 outline(bandInset);
                 const bevel = ctx.createLinearGradient(0, 0, 0, height);
                 bevel.addColorStop(0, Qt.alpha(coolReflection, 0.20));
-                bevel.addColorStop(0.32, Qt.alpha(reflection, 0.20));
-                bevel.addColorStop(0.65, Qt.alpha(reflection, 0.0045));
+                bevel.addColorStop(0.32, Qt.alpha(reflection, 0.045));
+                bevel.addColorStop(0.65, Qt.alpha(reflection, 0.025));
                 bevel.addColorStop(1, Qt.alpha(reflection, 0.035));
                 ctx.strokeStyle = bevel;
                 ctx.lineWidth = bandWidth;
@@ -170,7 +175,7 @@ Item {
             if (width > inner * 2 + 1 && height > inner * 2 + 1) {
                 outline(inner);
                 // TODO: handle light mode value
-                ctx.strokeStyle = Qt.alpha(paint.trench, 0.30);
+                ctx.strokeStyle = Qt.alpha(paint.trench, 0.75);
                 ctx.lineWidth = 0.9;
                 ctx.stroke();
             }

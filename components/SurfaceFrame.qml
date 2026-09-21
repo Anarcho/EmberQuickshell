@@ -17,7 +17,7 @@ Rectangle {
     property point activeReflectionPoint: Qt.point(width / 2, height)
     property rect backdropRect: Qt.rect(0, 0, width, height)
     property Item backdropSource: null
-    property real glassAmount: 1
+    property real glassAmount: 0.70
     property real rimWidth: T.SurfaceMetrics.rimWidth
 
     radius: T.Radii.pill(height)
