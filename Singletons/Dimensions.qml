@@ -12,4 +12,6 @@ QtObject {
 
     readonly property int emblemSize: 52
     readonly property int emblemWidth: 68
+
+    readonly property int iconButtonVisual: 38
 }

@@ -11,6 +11,7 @@ RowLayout {
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.margins: 10
+        color: "transparent"
         EmberMark {
             id: mark
         }

@@ -189,7 +189,7 @@ Item {
         }
         onReflectionChanged: requestPaint()
         onSmokeChanged: requestPaint()
-        onTintChanged: requestPain()
+        onTintChanged: requestPaint()
         onTrenchChanged: requestPaint()
         onWidthChanged: requestPaint()
 
