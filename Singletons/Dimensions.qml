@@ -9,4 +9,7 @@ QtObject {
     readonly property int expandedBarHeight: 104
     readonly property int expandedBarMinWidth: 280
     readonly property int expandedBarPreferredWidth: 1120
+
+    readonly property int emblemSize: 52
+    readonly property int emblemWidth: 68
 }

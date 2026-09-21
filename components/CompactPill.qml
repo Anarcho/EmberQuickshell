@@ -11,13 +11,8 @@ RowLayout {
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.margins: 10
-        implicitWidth: clock.implicitWidth
-        implicitHeight: clock.implicitHeight
-        radius: root.height / 2
-        ClockDisplay {
-            id: clock
-            anchors.centerIn: parent
-            dateText: root.dateText
+        EmberMark {
+            id: mark
         }
     }
 }
