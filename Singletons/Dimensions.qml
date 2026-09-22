@@ -17,6 +17,9 @@ QtObject {
     readonly property int compactEmblemWidth: 76
 
     readonly property int iconButtonVisual: 38
+    readonly property int iconLarge: 24
+    readonly property int iconMedium: 20
+    readonly property int iconSmall: 16
 
     readonly property int compactClockWidth: 92
 }

@@ -7,8 +7,13 @@ RowLayout {
     property string dateText: T.Clock.dateLabel
     property string timeText: T.Clock.timeLabel
 
-    Layout.preferredHeight: T.Dimensions.compactPillHeight - T.SurfaceMetrics.compactInset * 2
-    Layout.preferredWidth: T.Dimensions.compactPillPreferredWidth - T.SurfaceMetrics.compactInset * 2
+    property real compactPillPreferredHeight: T.Dimensions.compactPillHeight - T.SurfaceMetrics.compactInset * 2
+    property real compactPillPreferredWidth: T.Dimensions.compactPillPreferredWidth - T.SurfaceMetrics.compactInset * 2
+
+    property string wifiGlyph: "wifi"
+
+    Layout.preferredHeight: root.compactPillPreferredHeight
+    Layout.preferredWidth: root.compactPillPreferredWidth
 
     spacing: T.Spacing.sm
 
@@ -29,7 +34,7 @@ RowLayout {
         profileName: "compactPill"
         Layout.maximumWidth: T.Dimensions.compactClockWidth
         Layout.minimumWidth: T.Dimensions.compactClockWidth
-        Layout.preferredHeight: root.preferredHeight
+        Layout.preferredHeight: root.compactPillPreferredHeight
         Layout.preferredWidth: T.Dimensions.compactClockWidth
         focusPolicy: Qt.StrongFocus
 
@@ -40,5 +45,14 @@ RowLayout {
                 timeText: root.timeText
             }
         }
+    }
+
+    GlyphButton {
+        Layout.leftMargin: 6
+        accessibilityName: "Wi-Fi"
+        active: root.wifiGlyph
+        glyph: root.wifiGlyph
+        glyphSize: 21.5
+        visualSize: 40.5
     }
 }
