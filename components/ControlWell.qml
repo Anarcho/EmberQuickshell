@@ -5,6 +5,9 @@ Rectangle {
     id: root
     property bool active: false
     property bool soft: false
+    property bool hovered: false
+    property bool pressed: false
+
     color: "transparent"
 
     border.color: Qt.alpha(T.Colors.text, 0.08)
@@ -50,6 +53,7 @@ Rectangle {
             }
         }
     }
+
     Rectangle {
         anchors.fill: parent
         color: root.pressed ? T.Colors.surfacePressed : T.Colors.surfaceHover

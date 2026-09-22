@@ -11,6 +11,13 @@ RowLayout {
     property real compactPillPreferredWidth: T.Dimensions.compactPillPreferredWidth - T.SurfaceMetrics.compactInset * 2
 
     property string wifiGlyph: "wifi"
+    property bool wifiActive: false
+
+    property bool audioActive: false
+    property string audioGlyph: "volume"
+
+    property bool powerActive: false
+    property string batteryGlyph: "battery-charging"
 
     Layout.preferredHeight: root.compactPillPreferredHeight
     Layout.preferredWidth: root.compactPillPreferredWidth
@@ -20,7 +27,7 @@ RowLayout {
     EmberAbstractButton {
         id: emblemButton
         profileName: "compactPill"
-        borderColor: root.visualFocus ? T.Colors.accent : "transparent"
+        borderColor: emblemButton.visualFocus ? T.Colors.accent : "transparent"
         borderStrokeWidth: T.Strokes.focus
         backgroundColor: "transparent"
         backgroundRadius: Math.min(width, height) / 2
@@ -29,6 +36,7 @@ RowLayout {
             expanded: false
         }
     }
+
     EmberAbstractButton {
         id: clockButton
         profileName: "compactPill"
@@ -48,11 +56,40 @@ RowLayout {
     }
 
     GlyphButton {
-        Layout.leftMargin: 6
         accessibilityName: "Wi-Fi"
-        active: root.wifiGlyph
+        active: root.wifiActive
         glyph: root.wifiGlyph
+        glyphColor: Qt.alpha(T.Colors.text, 0.88)
         glyphSize: 21.5
         visualSize: 40.5
+        illuminated: false
+        softWell: true
+        wellBorderOpacity: 0.04
+    }
+    GlyphButton {
+        Layout.leftMargin: 6
+        accessibilityName: "Audio"
+        active: root.audioActive
+        glyph: root.audioGlyph
+        glyphColor: Qt.alpha(T.Colors.text, 0.88)
+        glyphSize: 21.5
+        illuminated: false
+        softWell: true
+        visualSize: 40.5
+        wellBorderOpacity: 0.04
+    }
+
+    GlyphButton {
+        Layout.leftMargin: 6
+        Layout.rightMargin: 20
+        accessibilityName: "Power"
+        active: root.powerActive
+        glyph: root.batteryGlyph
+        glyphColor: Qt.alpha(T.Colors.text, 0.88)
+        glyphSize: 21.5
+        illuminated: false
+        softWell: true
+        visualSize: 40.5
+        wellBorderOpacity: 0.04
     }
 }

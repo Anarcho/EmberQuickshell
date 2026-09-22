@@ -16,6 +16,7 @@ QtObject {
     readonly property int compactEmblemHeight: 60
     readonly property int compactEmblemWidth: 76
 
+    readonly property int iconButtonHit: 42
     readonly property int iconButtonVisual: 38
     readonly property int iconLarge: 24
     readonly property int iconMedium: 20

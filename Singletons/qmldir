@@ -11,3 +11,4 @@ singleton Surfaces Surfaces.qml
 singleton Colors Colors.qml
 singleton Typography Typography.qml
 singleton Strokes Strokes.qml
+singleton Opacity Opacity.qml

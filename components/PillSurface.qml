@@ -8,16 +8,16 @@ Item {
     readonly property var profile: T.SurfaceProfiles.forSurface(profileName)
     property Item contentItem
     default property alias content: column.data
-    property bool open: false
-    property bool reveal: false
+    property bool open: true
+    property bool reveal: true
 
     signal requestClose
 
     implicitWidth: Math.max(profile.minimumWidth, profile.preferredWidth, column.implicitWidth + profile.horizontalPadding * 2)
     implicitHeight: profile.height
     enabled: open && reveal
-    //opacity: open && reveal ? 1 : 0
-    //visible: opacity > 0
+    opacity: open && reveal ? 1 : 0
+    visible: opacity > 0
 
     data: [
         ColumnLayout {
