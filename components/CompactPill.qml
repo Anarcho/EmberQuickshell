@@ -4,11 +4,10 @@ import "../Singletons" as T
 
 RowLayout {
     id: root
+    required property var profile
+
     property string dateText: T.Clock.dateLabel
     property string timeText: T.Clock.timeLabel
-
-    property real compactPillPreferredHeight: T.Dimensions.compactPillHeight - T.SurfaceMetrics.compactInset * 2
-    property real compactPillPreferredWidth: T.Dimensions.compactPillPreferredWidth - T.SurfaceMetrics.compactInset * 2
 
     property string wifiGlyph: "wifi"
     property bool wifiActive: false
@@ -19,14 +18,16 @@ RowLayout {
     property bool powerActive: false
     property string batteryGlyph: "battery-charging"
 
-    Layout.preferredHeight: root.compactPillPreferredHeight
-    Layout.preferredWidth: root.compactPillPreferredWidth
+    Layout.preferredHeight: root.profile.contentHeight
+    Layout.preferredWidth: root.profile.preferredContentWidth
 
     spacing: T.Spacing.sm
 
     EmberAbstractButton {
         id: emblemButton
-        profileName: "compactPill"
+        Layout.preferredHeight: root.profile.emblemHeight
+        Layout.preferredWidth: root.profile.emblemWidth
+
         borderColor: emblemButton.visualFocus ? T.Colors.accent : "transparent"
         borderStrokeWidth: T.Strokes.focus
         backgroundColor: "transparent"
@@ -39,11 +40,8 @@ RowLayout {
 
     EmberAbstractButton {
         id: clockButton
-        profileName: "compactPill"
-        Layout.maximumWidth: T.Dimensions.compactClockWidth
-        Layout.minimumWidth: T.Dimensions.compactClockWidth
-        Layout.preferredHeight: root.compactPillPreferredHeight
-        Layout.preferredWidth: T.Dimensions.compactClockWidth
+        Layout.preferredHeight: root.profile.contentHeight
+        Layout.preferredWidth: root.profile.clockWidth
         focusPolicy: Qt.StrongFocus
 
         contentItem: Item {
@@ -56,8 +54,8 @@ RowLayout {
     }
 
     Divider {
-        Layout.preferredHeight: T.Dimensions.iconButtonVisual
-        Layout.preferredWidth: T.Strokes.hairline
+        Layout.preferredHeight: root.profile.contentHeight
+        Layout.preferredWidth: root.profile.dividerHeight
     }
 
     GlyphButton {
@@ -65,22 +63,23 @@ RowLayout {
         active: root.wifiActive
         glyph: root.wifiGlyph
         glyphColor: Qt.alpha(T.Colors.text, 0.88)
-        glyphSize: 21.5
-        visualSize: 40.5
+        glyphSize: root.profile.glyphSize
+        visualSize: root.profile.iconVisualSize
         illuminated: false
         softWell: true
         wellBorderOpacity: 0.04
     }
+
     GlyphButton {
         Layout.leftMargin: 6
         accessibilityName: "Audio"
         active: root.audioActive
         glyph: root.audioGlyph
         glyphColor: Qt.alpha(T.Colors.text, 0.88)
-        glyphSize: 21.5
+        glyphSize: root.profile.glyphSize
+        visualSize: root.profile.iconVisualSize
         illuminated: false
         softWell: true
-        visualSize: 40.5
         wellBorderOpacity: 0.04
     }
 
@@ -91,10 +90,10 @@ RowLayout {
         active: root.powerActive
         glyph: root.batteryGlyph
         glyphColor: Qt.alpha(T.Colors.text, 0.88)
-        glyphSize: 21.5
+        glyphSize: root.profile.glyphSize
+        visualSize: root.profile.iconVisualSize
         illuminated: false
         softWell: true
-        visualSize: 40.5
         wellBorderOpacity: 0.04
     }
 }

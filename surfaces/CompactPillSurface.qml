@@ -20,6 +20,7 @@ PillSurface {
 
     CompactPill {
         id: compactContent
+        profile: root.profile
         Layout.fillWidth: true
         Layout.fillHeight: true
     }
