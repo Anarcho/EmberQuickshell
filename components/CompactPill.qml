@@ -55,6 +55,11 @@ RowLayout {
         }
     }
 
+    Divider {
+        Layout.preferredHeight: T.Dimensions.iconButtonVisual
+        Layout.preferredWidth: T.Strokes.hairline
+    }
+
     GlyphButton {
         accessibilityName: "Wi-Fi"
         active: root.wifiActive
