@@ -19,6 +19,7 @@ PillSurface {
     }
     ExpandedBar {
         id: expandedBarContent
+        profile: root.profile
         Layout.fillWidth: true
         Layout.fillHeight: true
     }
