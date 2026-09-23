@@ -11,9 +11,6 @@ Item {
     property real arcValue: expanded ? 0.50 : 0.34
     property bool backgroundVisible: true
 
-    implicitHeight: T.Dimensions.emblemSize
-    implicitWidth: T.Dimensions.emblemWidth
-
     ControlWell {
         anchors.fill: parent
         border.color: Qt.alpha(T.Colors.text, root.expanded ? 0.025 : 0.035)

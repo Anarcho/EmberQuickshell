@@ -54,8 +54,8 @@ RowLayout {
     }
 
     Divider {
-        Layout.preferredHeight: root.profile.contentHeight
-        Layout.preferredWidth: root.profile.dividerHeight
+        Layout.preferredHeight: root.profile.dividerHeight
+        Layout.preferredWidth: T.Strokes.hairline
     }
 
     GlyphButton {

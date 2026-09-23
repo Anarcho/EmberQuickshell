@@ -5,7 +5,7 @@ import "components"
 
 Item {
     id: pill
-    property bool expanded: false
+    property bool expanded: true
     required property string screenName
 
     readonly property real targetHeight: currentFace.implicitHeight
@@ -108,6 +108,7 @@ Item {
 
         ExpandedBarSurface {
             id: expandedBar
+            screenName: frame.screenName
             anchors.fill: parent
             visible: pill.currentFace === expandedBar
         }

@@ -5,6 +5,7 @@ import "../components"
 
 PillSurface {
     id: root
+    required property string screenName
     profileName: "expandedBar"
     content: expandedBarContent
 
@@ -19,6 +20,7 @@ PillSurface {
     }
     ExpandedBar {
         id: expandedBarContent
+        screenName: root.screenName
         profile: root.profile
         Layout.fillWidth: true
         Layout.fillHeight: true
