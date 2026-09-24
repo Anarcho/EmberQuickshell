@@ -18,6 +18,8 @@ PanelWindow {
 
     implicitHeight: content.implicitHeight + (T.Spacing.sm * 2)
 
+    color: "transparent"
+
     // Surface Frame
     Rectangle {
         id: surface
@@ -34,6 +36,15 @@ PanelWindow {
             anchors.margins: 10
             implicitWidth: Math.max(shell.profile.minimumWidth, shell.profile.preferredWidth, content.implicitWidth + shell.profile.horizontalPadding * 2)
             implicitHeight: shell.profile.height
+
+            C.GlassMaterial {
+                active: false
+                anchors.fill: parent
+                backdropRect: Qt.rect(0, 0, surface.width, surface.height)
+                backdropSource: null
+                glassAmount: 0.70
+                rimWidth: T.SurfaceMetrics.rimWidth
+            }
 
             ColumnLayout {
                 id: column
