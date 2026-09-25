@@ -10,8 +10,6 @@ QtObject {
         readonly property real horizontalPadding: SurfaceMetrics.compactInset
         readonly property real verticalPadding: SurfaceMetrics.compactInset
 
-        readonly property real surfaceRadius: Radii.pill(height)
-
         readonly property real contentHeight: Math.max(0, height - verticalPadding * 2)
         readonly property real minimumContentWidth: Math.max(0, minimumWidth - horizontalPadding * 2)
         readonly property real preferredContentWidth: Math.max(0, preferredWidth - horizontalPadding * 2)
@@ -33,6 +31,7 @@ QtObject {
         readonly property real dividerHeightRatio: 38 / 60
         readonly property real dividerHeight: contentHeight * dividerHeightRatio
     }
+
     readonly property QtObject expandedBar: QtObject {
         readonly property real height: Dimensions.expandedBarHeight
         readonly property real minimumWidth: Dimensions.expandedBarMinWidth
@@ -40,8 +39,6 @@ QtObject {
 
         readonly property real horizontalPadding: SurfaceMetrics.expandedInsetHorizontal
         readonly property real verticalPadding: SurfaceMetrics.expandedInsetVertical
-
-        readonly property real surfaceRadius: Radii.md
 
         readonly property real contentHeight: Math.max(0, height - verticalPadding * 2)
         readonly property real minimumContentWidth: Math.max(0, minimumWidth - horizontalPadding * 2)

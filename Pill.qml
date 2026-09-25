@@ -5,7 +5,7 @@ import "components"
 
 Item {
     id: pill
-    property bool expanded: true
+    property bool expanded: false
     required property string screenName
 
     readonly property real targetHeight: currentFace.implicitHeight

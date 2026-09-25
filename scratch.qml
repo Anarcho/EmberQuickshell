@@ -33,8 +33,8 @@ PanelWindow {
         Item {
             id: content
             anchors.fill: parent
-            anchors.margins: 10
-            implicitWidth: Math.max(shell.profile.minimumWidth, shell.profile.preferredWidth, content.implicitWidth + shell.profile.horizontalPadding * 2)
+
+            implicitWidth: Math.max(shell.profile.minimumWidth, shell.profile.preferredWidth, layout.implicitWidth + shell.profile.horizontalPadding * 2)
             implicitHeight: shell.profile.height
 
             C.GlassMaterial {
@@ -44,12 +44,103 @@ PanelWindow {
                 backdropSource: null
                 glassAmount: 0.70
                 rimWidth: T.SurfaceMetrics.rimWidth
+                arcReflections: false
             }
 
-            ColumnLayout {
-                id: column
+            RowLayout {
+                id: layout
                 anchors.fill: parent
-                spacing: T.Spacing.md
+                anchors.leftMargin: shell.profile.horizontalPadding
+                anchors.rightMargin: shell.profile.horizontalPadding
+                anchors.topMargin: shell.profile.verticalPadding
+                anchors.bottomMargin: shell.profile.verticalPadding
+
+                Layout.preferredHeight: shell.profile.contentHeight
+                Layout.preferredWidth: shell.profile.preferredContentWidth
+
+                spacing: T.Spacing.sm
+
+                C.EmberAbstractButton {
+                    id: emblemButton
+
+                    Layout.preferredWidth: shell.profile.emblemWidth
+                    Layout.preferredHeight: shell.profile.emblemHeight
+
+                    borderColor: emblemButton.visualFocus ? T.Colors.accent : "transparent"
+                    borderStrokeWidth: T.Strokes.focus
+                    backgroundColor: "transparent"
+                    backgroundRadius: Math.min(width, height) / 2
+
+                    contentItem: C.EmberMark {
+                        expanded: false
+                    }
+                }
+
+                C.EmberAbstractButton {
+                    id: clockButton
+                    Layout.preferredHeight: shell.profile.contentHeight
+                    Layout.preferredWidth: shell.profile.clockWidth
+                    focusPolicy: Qt.StrongFocus
+
+                    contentItem: Item {
+                        C.ClockDisplay {
+                            anchors.centerIn: parent
+                            dateText: T.Clock.dateLabel
+                            timeText: T.Clock.timeLabel
+                        }
+                    }
+                }
+
+                C.Divider {
+                    Layout.preferredHeight: shell.profile.dividerHeight
+                    Layout.preferredWidth: T.Strokes.hairline
+                }
+
+                Item {
+                    id: workspace
+                    Layout.preferredHeight: shell.profile.contentHeight
+                    Layout.preferredWidth: shell.profile.clockWidth
+
+                    ColumnLayout {
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        RowLayout {
+                            Layout.alignment: Qt.AlignHCenter
+                            Repeater {
+                                model: 4
+                                Rectangle {
+                                    required property int index
+
+                                    implicitWidth: 12
+                                    implicitHeight: 12
+                                    radius: T.Radii.pill(height)
+                                    color: index === 2 ? T.Colors.accent : "transparent"
+                                    border.color: T.Colors.textMuted
+                                }
+                            }
+                        }
+                        Text {
+                            id: wsName
+                            Layout.alignment: Qt.AlignHCenter
+                            color: T.Colors.text
+                            text: "code"
+                        }
+                    }
+                }
+                C.Divider {
+                    Layout.preferredHeight: shell.profile.dividerHeight
+                    Layout.preferredWidth: T.Strokes.hairline
+                }
+                C.GlyphButton {
+                    accessibilityName: "Wi-Fi"
+                }
+                C.GlyphButton {
+                    accessibilityName: "Audio"
+                }
+                C.GlyphButton {
+                    accessibilityName: "Power"
+                }
             }
         }
     }

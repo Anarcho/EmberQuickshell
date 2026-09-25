@@ -20,7 +20,7 @@ Rectangle {
     property real glassAmount: 0.70
     property real rimWidth: T.SurfaceMetrics.rimWidth
 
-    radius: root.profile.surfaceRadius
+    radius: T.Radii.pill(root.height)
 
     data: [
         GlassMaterial {
